@@ -2,7 +2,6 @@ import 'raf/polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import App from '../src/components/app';
-import { location } from '../src/data/forecast.json';
-//import { forecasts } from '../src/data/forcast.json';
+import { location, forecasts } from '../src/data/forecast.json';
 
-render(<App location={location} />, document.getElementById('root'));
+render(<App location={location} forecasts={forecasts} />, document.getElementById('root'));

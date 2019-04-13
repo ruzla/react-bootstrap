@@ -8,10 +8,10 @@ it('renders the date', () => {
       date={130419}
       temperature={20}
       description="mockDescription"
-      icon="mockIcon"
+      icon="<WeatherIcon />"
     />
   ));
-  expect(wrapper.find('.forecast-summary__date').text()).toEqual('130419');
+  expect(wrapper.find('.forecast-summary__date').text()).toEqual('Thu 1st Jan');
 });
 
 it('renders the temperature', () => {
@@ -20,10 +20,10 @@ it('renders the temperature', () => {
       date={130419}
       temperature={20}
       description="mockDescription"
-      icon="mockIcon"
+      icon="<WeatherIcon />"
     />
   ));
-  expect(wrapper.find('.forecast-summary__temperature').text()).toEqual('20');
+  expect(wrapper.find('.forecast-summary__temperature').text()).toEqual('20°c');
 });
 
 it('renders the description', () => {
@@ -32,7 +32,7 @@ it('renders the description', () => {
       date={130419}
       temperature={20}
       description="mockDescription"
-      icon="mockIcon"
+      icon="<WeatherIcon />"
     />
   ));
   expect(wrapper.find('.forecast-summary__description').text()).toEqual('mockDescription');
@@ -44,8 +44,8 @@ it('renders the icon', () => {
       date={130419}
       temperature={20}
       description="mockDescription"
-      icon="mockIcon"
+      icon="<WeatherIcon />"
     />
   ));
-  expect(wrapper.find('.forecast-summary__icon').text()).toEqual('mockIcon');
+  expect(wrapper.find('.forecast-summary__icon').text()).toEqual('<WeatherIcon />');
 });

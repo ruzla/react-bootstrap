@@ -11,6 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      searchError: '',
       selectedDate: 0,
       forecasts: [],
       location: {
@@ -38,11 +39,14 @@ class App extends React.Component {
         this.setState({
           forecasts: response.data.forecasts,
           location: response.data.location,
+          searchError: '',
         });
       })
       .catch(error => {
         if (error.response) {
-          console.log('Location not found');
+          this.setState({
+            searchError: 'Location Not Found',
+          });
         }
       });
   }
@@ -55,7 +59,7 @@ class App extends React.Component {
           city={this.state.location.city}
           country={this.state.location.country}
         />
-        <SearchForm locationSearch={this.locationSearch} />
+        <SearchForm locationSearch={this.locationSearch} searchError={this.state.searchError} />
         <ForecastSummaries forecasts={this.state.forecasts} onForecastSelect={this.handleForecastSelect} />
         {
             selectedForecast && <ForecastDetails forecast={selectedForecast} />

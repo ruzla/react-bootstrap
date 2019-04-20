@@ -2,10 +2,14 @@ import React from 'react';
 import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 import ForecastDetails from './forecast-details';
-import '../styles/app.scss';
-import '../styles/forecast-summaries.scss';
 import axios from 'axios';
 import SearchForm from './search-form';
+import '../styles/app.scss';
+import '../styles/forecast-summaries.scss';
+import '../styles/search-form.scss';
+import '../styles/forecast-details.scss';
+
+const URL = 'https://mcr-codes-weather.herokuapp.com/forecast?city=';
 
 class App extends React.Component {
   constructor(props) {
@@ -34,7 +38,7 @@ class App extends React.Component {
   }
 
   locationSearch(city) {
-    axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=${city}`)
+    axios.get(`${URL}${city}`)
       .then((response) => {
         this.setState({
           forecasts: response.data.forecasts,
@@ -45,7 +49,7 @@ class App extends React.Component {
       .catch(error => {
         if (error.response) {
           this.setState({
-            searchError: 'Location Not Found',
+            searchError: 'Location Not Found!',
           });
         }
       });

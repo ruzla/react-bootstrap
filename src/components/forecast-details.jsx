@@ -11,19 +11,19 @@ const ForecastDetails = props => (
       <span><WeatherIcon name="owm" flip="horizontal" rotate="90" iconId={props.forecast.icon} /></span>
     </div>
     <div className="forecast-details__max">
-      <span>Max {props.forecast.temperature.max}°c</span>
+      <span>Max: {props.forecast.temperature.max}°c</span>
     </div>
     <div className="forecast-details__min">
-      <span>Min {props.forecast.temperature.min}°c</span>
+      <span>Min: {props.forecast.temperature.min}°c</span>
     </div>
     <div className="forcast-details__humidity">
-      <span>Humidity {props.forecast.humidity}</span>
+      <span>Humidity: {props.forecast.humidity}%</span>
     </div>
     <div className="forcast-details__speed">
-      <span>Wind Speed{props.forecast.wind.speed}</span>
+      <span>Wind Speed: {props.forecast.wind.speed} mph</span>
     </div>
     <div className="forcast-details__direction">
-      <span>Wind Direction {props.forecast.wind.direction}</span>
+      <span>Wind Direction: {props.forecast.wind.direction.toUpperCase()}</span>
     </div>
   </div>
 );

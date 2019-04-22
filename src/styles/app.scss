@@ -1,30 +1,11 @@
 $primary-color: #6895ff;
 
-.forecast {
-    margin-left: 0 20px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
     background-color: $primary-color;
     color: white;
 }
 
-.summary {
-    background-color: $primary-color;
-    font-size: 20px;
-      .forecast-summary__icon {
-        font-size: 50px;
-        margin-top: 20px;
-        padding-bottom: 10px;
-      }
-      button {
-        color: blue;
-        background-color: yellow;
-        &:focus { color:black; background:white;}
-        border: none;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-      }
+.forecast {
+    margin-left: 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
-

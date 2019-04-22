@@ -5,6 +5,7 @@ import ForecastDetails from './forecast-details';
 import axios from 'axios';
 import SearchForm from './search-form';
 import '../styles/app.scss';
+import '../styles/forecast-summary.scss';
 import '../styles/forecast-summaries.scss';
 import '../styles/search-form.scss';
 import '../styles/forecast-details.scss';

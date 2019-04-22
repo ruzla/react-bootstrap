@@ -16,6 +16,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      searchText: '',
       searchError: '',
       selectedDate: 0,
       forecasts: [],
@@ -24,21 +25,29 @@ class App extends React.Component {
         country: '',
       },
     };
-    this.handleForecastSelect = this.handleForecastSelect.bind(this);
-    this.locationSearch = this.locationSearch.bind(this);
   }
+
+  handleInputChange = (event) => {
+    this.setState({ searchText: event.target.value });
+  };
+
+  handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      this.setState(this.locationSearch(this.state.searchText));
+    }
+  };
 
   componentDidMount() {
     this.locationSearch('manchester');
   }
 
-  handleForecastSelect(date) {
+  handleForecastSelect = (date) => {
     this.setState({
       selectedDate: date,
     });
-  }
+  };
 
-  locationSearch(city) {
+  locationSearch = (city) => {
     axios.get(`${URL}${city}`)
       .then((response) => {
         this.setState({
@@ -54,7 +63,7 @@ class App extends React.Component {
           });
         }
       });
-  }
+  };
 
   render() {
     const selectedForecast = this.state.forecasts.find(forecast => forecast.date === this.state.selectedDate);
@@ -63,8 +72,15 @@ class App extends React.Component {
         <LocationDetails
           city={this.state.location.city}
           country={this.state.location.country}
+          isHidden={this.state.isHidden}
         />
-        <SearchForm locationSearch={this.locationSearch} searchError={this.state.searchError} />
+        <SearchForm
+          locationSearch={this.locationSearch}
+          searchError={this.state.searchError}
+          handleInputChange={this.handleInputChange}
+          handleKeyDown={this.handleKeyDown}
+          searchText={this.state.searchText}
+        />
         <ForecastSummaries forecasts={this.state.forecasts} onForecastSelect={this.handleForecastSelect} />
         {
             selectedForecast && <ForecastDetails forecast={selectedForecast} />

@@ -2,7 +2,6 @@ import React from 'react';
 import ForecastSummary from './forecast-summary';
 
 const ForecastSummaries = props => (
-
   <div className="forecast-summaries">
     {
       props.forecasts.map(forecast => (

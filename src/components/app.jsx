@@ -27,16 +27,6 @@ class App extends React.Component {
     };
   }
 
-  handleInputChange = (event) => {
-    this.setState({ searchText: event.target.value });
-  };
-
-  handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      this.setState(this.locationSearch(this.state.searchText));
-    }
-  };
-
   componentDidMount() {
     this.locationSearch('manchester');
   }
@@ -45,6 +35,19 @@ class App extends React.Component {
     this.setState({
       selectedDate: date,
     });
+  };
+
+  handleInputChange = (event) => {
+    this.setState({ searchText: event.target.value });
+    if (event.target.value === '') {
+      this.setState({ searchError: '' });
+    }
+  };
+
+  handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      this.setState(this.locationSearch(this.state.searchText));
+    }
   };
 
   locationSearch = (city) => {
@@ -72,7 +75,6 @@ class App extends React.Component {
         <LocationDetails
           city={this.state.location.city}
           country={this.state.location.country}
-          isHidden={this.state.isHidden}
         />
         <SearchForm
           locationSearch={this.locationSearch}
@@ -81,10 +83,11 @@ class App extends React.Component {
           handleKeyDown={this.handleKeyDown}
           searchText={this.state.searchText}
         />
-        <ForecastSummaries forecasts={this.state.forecasts} onForecastSelect={this.handleForecastSelect} />
-        {
-            selectedForecast && <ForecastDetails forecast={selectedForecast} />
-        }
+        <ForecastSummaries
+          forecasts={this.state.forecasts}
+          onForecastSelect={this.handleForecastSelect}
+        />
+        {selectedForecast && <ForecastDetails forecast={selectedForecast} />}
       </div>
     );
   }

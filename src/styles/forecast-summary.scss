@@ -1,0 +1,19 @@
+$primary-color: #6895ff;
+
+.summary {
+    background-color: $primary-color;
+    font-size: 20px;
+      .forecast-summary__icon {
+        font-size: 50px;
+        margin-top: 20px;
+        padding-bottom: 10px;
+      }
+      button {
+        color: blue;
+        background-color: yellow;
+        &:focus { color:black; background:white;}
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+}
